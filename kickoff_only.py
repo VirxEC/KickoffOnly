@@ -5,6 +5,7 @@ from rlbot.utils.game_state_util import GameState, BallState, Physics, Vector3
 from rlbot.utils.structures.game_data_struct import GameTickPacket
 
 RESET_DELAY = 0.5  # seconds
+BALL_OFFSET = 1 # gets added on top of the ball radius
 
 
 class KickoffOnly(BaseScript):
@@ -23,7 +24,7 @@ class KickoffOnly(BaseScript):
                     self.delay_start_time = packet.game_info.seconds_elapsed
                     continue
 
-                if packet.game_info.seconds_elapsed - self.delay_start_time < RESET_DELAY or packet.game_ball.physics.location.y == 0:
+                if packet.game_info.seconds_elapsed - self.delay_start_time < RESET_DELAY or abs(packet.game_ball.physics.location.y) < BALL_OFFSET + packet.game_ball.collision_shape.sphere.diameter / 2:
                     self.handled = False
                     continue
 
