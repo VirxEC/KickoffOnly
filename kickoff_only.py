@@ -38,5 +38,5 @@ class KickoffOnly(BaseScript):
 
 
 if __name__ == "__main__":
-    zero_g_mutator = KickoffOnly()
-    zero_g_mutator.main()
+    kickoff_only = KickoffOnly()
+    kickoff_only.main()
