@@ -4,4 +4,4 @@ bot_configs = ["src/script.toml"]
 
 [config.builder_config]
 builder_type = "pyinstaller"
-entry_file = "src/kickoff_only.py"
+entry_file = "kickoff_only.spec"
