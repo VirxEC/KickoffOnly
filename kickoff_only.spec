@@ -3,7 +3,7 @@
 
 a = Analysis(
     ['src/kickoff_only.py'],
-    pathex=['src/'],
+    pathex=[],
     binaries=[],
     datas=[],
     hiddenimports=[],
@@ -25,7 +25,7 @@ exe = EXE(
     name='kickoff_only',
     debug=False,
     bootloader_ignore_signals=False,
-    strip=False,
+    strip=True,
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
