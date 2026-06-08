@@ -35,7 +35,26 @@ uv run ruff check --fix
 
 ## Configuration
 
-| Setting | Default | Description |
-|---|---|---|
-| `RESET_DELAY` | `0.5` | Seconds after kickoff before the script arms |
-| `BALL_OFFSET` | `1` | Extra margin added on top of the ball's radius when checking if it crossed center |
+You can configure the script via CLI arguments. Run `uv run kickoff_only.py --help` from the `src/` directory:
+
+```
+usage: kickoff_only.py [-h] [--reset-delay RESET_DELAY]
+                       [--ball-offset BALL_OFFSET]
+
+Kickoff Only RLBot script
+
+options:
+  -h, --help            show this help message and exit
+  --reset-delay RESET_DELAY
+                        seconds after kickoff before resetting
+                        (default: 0.5)
+  --ball-offset BALL_OFFSET
+                        extra margin added on top of ball radius
+                        (default: 1)
+```
+
+To use custom values, update the `run_command` in `script.toml`, for example:
+
+```toml
+run_command = "uv run kickoff_only.py --reset-delay 1.0 --ball-offset 2.5"
+```
