@@ -1,4 +1,6 @@
 #:schema https://rlbot.org/schemas/agent.json
+#:tombi schema.strict = false
+
 [settings]
 name = "Kickoff Only"
 agent_id = "virxec/kickoff-only"
@@ -11,3 +13,7 @@ description = "A few seconds after kickoff ends, this puts the ball in the net o
 fun_fact = 'You might want to enable "Skip Replays" under Extra and "Unlimited" Match Length under Mutators.'
 source_link = "https://github.com/VirxEC/KickoffOnly"
 language = "Python"
+
+[params]
+reset_delay = 0.5  # seconds
+ball_offset = 1  # gets added on top of the ball radius

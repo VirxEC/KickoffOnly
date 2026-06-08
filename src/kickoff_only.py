@@ -1,3 +1,6 @@
+import tomllib
+from pathlib import Path
+
 from rlbot.flat import (
     BallInfo,
     BoxShape,
@@ -11,8 +14,13 @@ from rlbot.flat import (
 )
 from rlbot.managers import Script
 
-RESET_DELAY = 0.5  # seconds
-BALL_OFFSET = 1  # gets added on top of the ball radius
+# Load configuration from script.toml
+_config_path = Path(__file__).resolve().parent / "script.toml"
+with open(_config_path, "rb") as _f:
+    _config = tomllib.load(_f)
+_params = _config.get("params", {})
+RESET_DELAY = _params.get("reset_delay", 0.5)
+BALL_OFFSET = _params.get("ball_offset", 1)
 
 
 def calculate_margin(ball: BallInfo) -> float:
