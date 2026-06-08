@@ -1,5 +1,4 @@
-import tomllib
-from pathlib import Path
+import argparse
 
 from rlbot.flat import (
     BallInfo,
@@ -14,13 +13,8 @@ from rlbot.flat import (
 )
 from rlbot.managers import Script
 
-# Load configuration from script.toml
-_config_path = Path(__file__).resolve().parent / "script.toml"
-with open(_config_path, "rb") as _f:
-    _config = tomllib.load(_f)
-_params = _config.get("params", {})
-RESET_DELAY = _params.get("reset_delay", 0.5)
-BALL_OFFSET = _params.get("ball_offset", 1)
+RESET_DELAY = 0.5  # seconds
+BALL_OFFSET = 1  # gets added on top of the ball radius
 
 
 def calculate_margin(ball: BallInfo) -> float:
@@ -78,6 +72,24 @@ class KickoffOnly(Script):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Kickoff Only RLBot script")
+    parser.add_argument(
+        "--reset-delay",
+        type=float,
+        default=RESET_DELAY,
+        help="seconds after kickoff before resetting (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--ball-offset",
+        type=float,
+        default=BALL_OFFSET,
+        help="extra margin added on top of ball radius (default: %(default)s)",
+    )
+    args = parser.parse_args()
+
+    globals()["RESET_DELAY"] = args.reset_delay
+    globals()["BALL_OFFSET"] = args.ball_offset
+
     KickoffOnly("virxec/kickoff-only").run(
         wants_ball_predictions=False, wants_match_communications=False
     )

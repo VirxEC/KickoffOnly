@@ -4,8 +4,8 @@
 [settings]
 name = "Kickoff Only"
 agent_id = "virxec/kickoff-only"
-run_command = "uv run kickoff_only.py"
-run_command_linux = "uv run kickoff_only.py"
+run_command = "uv run kickoff_only.py --reset-delay 0.5 --ball-offset 1"
+run_command_linux = "uv run kickoff_only.py --reset-delay 0.5 --ball-offset 1"
 
 [details]
 developer = "VirxEC"
@@ -13,7 +13,3 @@ description = "A few seconds after kickoff ends, this puts the ball in the net o
 fun_fact = 'You might want to enable "Skip Replays" under Extra and "Unlimited" Match Length under Mutators.'
 source_link = "https://github.com/VirxEC/KickoffOnly"
 language = "Python"
-
-[params]
-reset_delay = 0.5  # seconds
-ball_offset = 1  # gets added on top of the ball radius
