@@ -16,15 +16,15 @@ BALL_OFFSET = 1  # gets added on top of the ball radius
 
 
 def calculate_margin(ball: BallInfo) -> float:
-    match ball.shape.item:
+    margin = 0
+    match ball.shape:
         case SphereShape(d):
             margin = d
         case BoxShape(l, w, h):
             margin = (l + w + h) / 3
         case CylinderShape(d, h):
             margin = (d + h) / 2
-        case _:
-            margin = 0
+
     return margin / 2 + BALL_OFFSET
 
 

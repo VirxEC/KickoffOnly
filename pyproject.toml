@@ -1,0 +1,19 @@
+[project]
+name = "kickoff-only"
+version = "0.1.0"
+description = "A few seconds after kickoff ends, this puts the ball in the net of the kickoff loser."
+requires-python = ">=3.12"
+dependencies = [
+  "rlbot>=2.0.0.beta",
+]
+
+[dependency-groups]
+dev = [
+  "ruff>=0.11",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

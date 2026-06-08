@@ -1,8 +1,9 @@
+#:schema https://rlbot.org/schemas/agent.json
 [settings]
 name = "Kickoff Only"
 agent_id = "virxec/kickoff-only"
-run_command = "./kickoff_only.py"
-run_command_linux = "./venv/bin/python kickoff_only.py"
+run_command = "uv run kickoff_only.py"
+run_command_linux = "uv run kickoff_only.py"
 
 [details]
 developer = "VirxEC"
