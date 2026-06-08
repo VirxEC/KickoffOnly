@@ -1,0 +1,13 @@
+#:schema https://rlbot.org/schemas/agent.json
+[settings]
+name = "Kickoff Only"
+agent_id = "virxec/kickoff-only"
+run_command = "uv run kickoff_only.py"
+run_command_linux = "uv run kickoff_only.py"
+
+[details]
+developer = "VirxEC"
+description = "A few seconds after kickoff ends, this puts the ball in the net of the kickoff loser. Requires state setting."
+fun_fact = 'You might want to enable "Skip Replays" under Extra and "Unlimited" Match Length under Mutators.'
+source_link = "https://github.com/VirxEC/KickoffOnly"
+language = "Python"
